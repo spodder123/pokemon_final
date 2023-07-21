@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_21_173139) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_21_181934) do
   create_table "abouts", force: :cascade do |t|
     t.string "title"
     t.string "body"
@@ -60,6 +60,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_173139) do
     t.string "candy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.integer "categories_id", null: false
+    t.index ["categories_id"], name: "index_pokemons_on_categories_id"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -78,4 +81,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_173139) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "pokemons", "categories", column: "categories_id"
 end
