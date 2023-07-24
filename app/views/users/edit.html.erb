@@ -1,2 +1,28 @@
 <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p>
+
+<%= form_for @user, url: user_edit_path, method: :patch do |f| %>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :postal_code %>
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div>
+    <%= f.label :province_id %>
+    <%= f.select :province_id, options_for_select(province_options), include_blank: true %>
+  </div>
+
+  <div>
+    <%= f.submit "Update Profile" %>
+  </div>
+<% end %>

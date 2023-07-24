@@ -10,5 +10,6 @@ Rails.application.routes.draw do
    get "/pokemons/:id", to:"pokemons#show", as: "pokemon_show"
    get "/categories", to:"categories#index", as: "categories"
    get "/categories/:id", to:"categories#show", as: "category_show"
-
+   get "/users/:id", to:"users#show", as: "user_show"
+   get "/users/:id", to:"users#edit", as: "user_edit"
 end

@@ -16,6 +16,7 @@
         <% if user_signed_in? %>
          <li class="nav-item">
           <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+          <a class="nav-link" href="<%= user_show_path(current_user.id) %>">Details</a>
         </li>
         <%else%>
         <li class="nav-item">
