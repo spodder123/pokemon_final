@@ -13,6 +13,16 @@
         <li class="nav-item">
           <a class="nav-link" href="<%= categories_path %>">Category</a>
         </li>
+        <% if user_signed_in? %>
+         <li class="nav-item">
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+        </li>
+        <%else%>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= user_session_path %>">Sign In</a>
+        </li>
+        <% end %>
+
       </ul>
       <form class="d-flex" role="search" method="GET" action="<%= search_path %>">
       <select class="form-select" aria-label="Default select example" name="category">

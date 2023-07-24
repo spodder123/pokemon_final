@@ -3,10 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :province
+  belongs_to :province, class_name: 'Province', optional: true
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :password, presence: true
-  validates :address, presence: true
-  validates :province_id, presence: true, numericality: { only_integer: true }
-  validates :postal_code, presence: true
+
+  #validates :province_id, numericality: { only_integer: true }
 end
