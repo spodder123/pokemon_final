@@ -34,5 +34,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+    @p = Province.all
   end
 end

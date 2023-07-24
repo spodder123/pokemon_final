@@ -1,28 +1,20 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<form class="d-flex" role="edit" method="PATCH" action="<%= user_edit_path %>">
+<div class="form-example" >
+<label for= "Address"> Enter your full address: </label>
+<input type="text" name="name" id="name">
+</div>
+<div class="form-example" >
+<label for= "Postal Code"> Enter your Postal Code: </label>
+<input type="text" name="name" id="name">
+</div>
 
-<%= form_for @user, url: user_edit_path, method: :patch do |f| %>
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
 
-  <div>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
+      <select class="form-select" aria-label="Default select example" name="Province">
+        <option value="all">All Provinces</option>
+        <% @p.each do |province| %>
+          <option value="<%= province.id %>"><%= province.name %></option>
+        <% end %>
+      </select>
 
-  <div>
-    <%= f.label :postal_code %>
-    <%= f.text_field :postal_code %>
-  </div>
-
-  <div>
-    <%= f.label :province_id %>
-    <%= f.select :province_id, options_for_select(province_options), include_blank: true %>
-  </div>
-
-  <div>
-    <%= f.submit "Update Profile" %>
-  </div>
-<% end %>
+      <button class="btn btn-outline-success" type="submit">Submit</button>
+    </form>
