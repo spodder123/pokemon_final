@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   # root "/"
    get "/pokemons", to:"pokemons#index", as: "pokemons"
    get "/pokemons/:id", to:"pokemons#show", as: "pokemon_show"
+   get "/categories", to:"categories#index", as: "categories"
+   get "/categories/:id", to:"categories#show", as: "category_show"
 
 end
