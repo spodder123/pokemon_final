@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_21_201439) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_24_164124) do
   create_table "abouts", force: :cascade do |t|
     t.string "title"
     t.string "body"
@@ -79,7 +79,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_201439) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.integer "province_id"
+    t.string "postal_code"
+    t.index ["province_id"], name: "index_users_on_province_id"
   end
 
   add_foreign_key "pokemons", "categories", column: "categories_id"
+  add_foreign_key "users", "provinces"
 end
