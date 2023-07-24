@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'search/index', to:"search#index", as:"search"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
