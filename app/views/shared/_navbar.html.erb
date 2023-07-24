@@ -14,7 +14,7 @@
           <a class="nav-link" href="<%= categories_path %>">Category</a>
         </li>
       </ul>
-      <form class="d-flex" role="search" method="GET" action="<%= %>">
+      <form class="d-flex" role="search" method="GET" action="<%= search_path %>">
       <select class="form-select" aria-label="Default select example" name="category">
         <option value="all">All Categories</option>
         <% @categories.each do |category| %>

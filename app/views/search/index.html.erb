@@ -1,0 +1,37 @@
+
+<h1>Search Results</h1>
+
+<% if @pokemons.present? %>
+  <table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pokemons.each do |pokemon| %>
+        <tr>
+          <td><%= pokemon.name %></td>
+          <td><%= pokemon.price %></td>
+          <td>
+            <%= link_to "Show", pokemon_show_path(pokemon), class: "btn btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No matching Pokemons found.</p>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
