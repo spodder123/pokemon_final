@@ -4,5 +4,12 @@
 
 <h1>Category</h1>
 <p><%=@category.name%></p>
+ <ul>
+  <% @pokemons.each do |pokemon|%>
+ <li>
+ <%= link_to pokemon.name, pokemon_show_path(pokemon) %>
+ </li>
+ <% end %>
+ </ul>
 
 
