@@ -12,4 +12,5 @@ Rails.application.routes.draw do
    get "/categories/:id", to:"categories#show", as: "category_show"
    get "/users/:id", to:"users#show", as: "user_show"
    get "/users/:id/edit", to:"users#edit", as: "user_edit"
+   patch "/users/:id/update", to:"users#update", as: "user_update"
 end

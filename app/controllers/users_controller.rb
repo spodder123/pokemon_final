@@ -16,18 +16,7 @@ class UsersController < ApplicationController
   end
 
 
-  #   redirect_to new_user_session_path unless user_signed_in? && (User.find(params[:id].to_i) == current_user)
-  # end
-  #   if user_signed_in?
-  #     userid = current_user.id
-  #     if User.find(userid).nil?
-  #       redirect to new_user_session_path
-  #       return
-  #     end
-  #   else
-  #     redirect to new_user_session_path
-  #   end
-  # end
+
 
   def show
     @user = User.find(current_user.id)
@@ -36,5 +25,22 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @p = Province.all
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      redirect_to user_show_path, notice: "Profile successfully updated."
+    else
+      @p = Province.all
+      render :edit
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :address, :postal_code, :province_id)
   end
 end

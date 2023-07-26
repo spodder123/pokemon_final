@@ -1,10 +1,29 @@
-<%= @user.email%>
-<%= @user.address%>
-<%= @user.province%>
-
-<a class="nav-link" href="<%= user_edit_path(@user.id) %>">Edit</a>
 
 
 <h1>User Profile</h1>
 
+<div>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</div>
 
+<div>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</div>
+
+<div>
+  <strong>Postal Code:</strong>
+  <%= @user.postal_code %>
+</div>
+
+<div>
+  <strong>Province:</strong>
+  <% if @user.province %>
+    <%= @user.province.name %>
+  <% else %>
+    Not specified
+  <% end %>
+</div>
+
+<a class="nav-link" href="<%= user_edit_path(@user.id) %>">Edit</a>

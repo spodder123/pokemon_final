@@ -28,6 +28,25 @@ end
 
 
 
+# db/seeds.rb
+
+# Create provinces with data
+Province.create([
+  { name: "Alberta", PST: 0.0, GST: 5.0, HST: 0.0 },
+  { name: "British Columbia", PST: 7.0, GST: 5.0, HST: 0.0 },
+  { name: "Manitoba", PST: 7.0, GST: 5.0, HST: 0.0 },
+  { name: "New Brunswick", PST: 0.0, GST: 5.0, HST: 15.0 },
+  { name: "Newfoundland and Labrador", PST: 0.0, GST: 5.0, HST: 15.0 },
+  { name: "Nova Scotia", PST: 0.0, GST: 5.0, HST: 15.0 },
+  { name: "Ontario", PST: 0.0, GST: 5.0, HST: 13.0 },
+  { name: "Prince Edward Island", PST: 0.0, GST: 5.0, HST: 15.0 },
+  { name: "Quebec", PST: 9.975, GST: 5.0, HST: 0.0 },
+  { name: "Saskatchewan", PST: 6.0, GST: 5.0, HST: 0.0 },
+  { name: "Northwest Territories", PST: 0.0, GST: 5.0, HST: 0.0 },
+  { name: "Nunavut", PST: 0.0, GST: 5.0, HST: 0.0 },
+  { name: "Yukon", PST: 0.0, GST: 5.0, HST: 0.0 }
+])
+
 
 
 
