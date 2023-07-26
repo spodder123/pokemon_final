@@ -3,7 +3,7 @@ require 'open-uri'
 require 'faker'
 
 # Fetch data from the API
-url = 'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json'
+url = 'https:ra//raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json'
 response = URI.open(url)
 data = JSON.parse(response.read)
 
@@ -71,6 +71,7 @@ Province.create([
 #   # Create random prices for the city bike in all countries
 #   Country.all.each do |country|
 #     price = Faker::Number.between(from: 200, to: 2000)
-#     city_bike.prices.create!(price: price, country: country)
+#
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?  city_bike.prices.create!(price: price, country: country)
 #   end
 # end
