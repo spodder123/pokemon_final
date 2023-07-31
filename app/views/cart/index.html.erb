@@ -4,7 +4,11 @@
 <li>
 <% pokemon = @pokemons.find { |p| p.id == item ['id'] }%>
 <%= pokemon.name %>
-<%= item['qty']%>
+<%= item['quantity']%>
+<form action="<%=editcart_path %>" method="post">
+<%= number_field_tag 'quantity', item['quantity'], min:1 %>
+<%= button_to 'EDIT NUMBER OF ITEMS', editcart_path, params: {pokemonid: pokemon.id},method: :put %>
+</form>
 <%= button_to 'delete', removeitem_path, params: {pokemonid: item['id']}, method: :delete%>
 </li>
 

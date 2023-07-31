@@ -18,4 +18,5 @@ Rails.application.routes.draw do
    post 'pokemons/addtocart', to:"cart#addtocart", as: "addtocart"
    get "/cart", to:"cart#index", as: "cart"
    delete 'pokemons/removeitem', to:"cart#removeitem", as: "removeitem"
+   put 'pokemons/editcart', to: "cart#editcart", as: "editcart"
 end

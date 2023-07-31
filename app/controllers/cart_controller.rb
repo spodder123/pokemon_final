@@ -8,11 +8,30 @@ class CartController < ApplicationController
       pokemonid = params[:pokemonid]
 
       #puts pokemonid
-      cartitem = {'id' => pokemonid.to_i, 'qty' => 1 }
+      cartitem = {'id' => pokemonid.to_i, 'quantity' => 1 }
       session[:mycart] << cartitem unless session[:mycart].any? do |item| item['id'] == cartitem['id'] end
         #puts session[:mycart]
       redirect_to cart_path
     end
+
+    def editcart
+      puts params.inspect
+      pokemonid = params[:pokemonid].to_i
+      quantity = params[:quantity].to_i
+
+    mycart = session[:mycart].select { |item| item['id'] != pokemonid}
+    session[:mycart] = mycart
+
+    currentitem= session[:mycart].find { |item| item['id'] == pokemonid}
+    if currentitem
+      currentitem['quantity'] = quantity
+    else
+      updateditem = {'id' => pokemonid, 'quantity' => quantity}
+      session[:mycart] << updateditem
+    end
+
+    redirect_to cart_path
+  end
 
     def removeitem
       puts params.inspect
