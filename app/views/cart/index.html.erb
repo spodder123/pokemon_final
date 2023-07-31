@@ -5,6 +5,8 @@
 <% pokemon = @pokemons.find { |p| p.id == item ['id'] }%>
 <%= pokemon.name %>
 <%= item['qty']%>
+<%= button_to 'delete', removeitem_path, params: {pokemonid: item['id']}, method: :delete%>
 </li>
+
 
 <% end %>

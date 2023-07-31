@@ -17,4 +17,5 @@ Rails.application.routes.draw do
    patch "/users/:id/update", to:"users#update", as: "user_update"
    post 'pokemons/addtocart', to:"cart#addtocart", as: "addtocart"
    get "/cart", to:"cart#index", as: "cart"
+   delete 'pokemons/removeitem', to:"cart#removeitem", as: "removeitem"
 end

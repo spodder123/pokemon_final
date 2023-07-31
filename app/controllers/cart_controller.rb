@@ -14,4 +14,11 @@ class CartController < ApplicationController
       redirect_to cart_path
     end
 
+    def removeitem
+      puts params.inspect
+      pokemonid = params[:pokemonid].to_i
+      session[:mycart].delete_if { |item| item['id'] == pokemonid}
+      redirect_to cart_path
+    end
+
 end
