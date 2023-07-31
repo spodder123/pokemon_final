@@ -7,3 +7,7 @@
 <p><%=@pokemon.weight%></h1>
 <p><%=@pokemon.candy%></h1>
 
+<form action="<%=addtocart_path %>" method="post">
+<%= button_to 'ADD IN YOUR CART', addtocart_path, params: {id: @pokemon.id},method: :post %>
+
+</form>

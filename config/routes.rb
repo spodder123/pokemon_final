@@ -15,4 +15,5 @@ Rails.application.routes.draw do
    get "/users/:id", to:"users#show", as: "user_show"
    get "/users/:id/edit", to:"users#edit", as: "user_edit"
    patch "/users/:id/update", to:"users#update", as: "user_update"
+   post 'pokemons/addtocart', to:"cart#addtocart", as: "addtocart"
 end

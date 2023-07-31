@@ -5,4 +5,10 @@ class ApplicationController < ActionController::Base
     #@search_categories = Category.pluck:(:name)
     @categories= Category.all()
   end
+
+  private
+  def start_session
+    session[:mycart] ||= []
+    @cart = session[:mycart]
+  end
 end
