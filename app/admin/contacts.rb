@@ -15,6 +15,14 @@ ActiveAdmin.register Contact do
   #   permitted
   # end
 
+  controller do
+    def new
+      redirect_to admin_contacts_path
+    end
 
+    def create
+      redirect_to admin_contacts_path
+    end
+  end
 
 end
