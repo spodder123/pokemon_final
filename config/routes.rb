@@ -19,4 +19,6 @@ Rails.application.routes.draw do
    get "/cart", to:"cart#index", as: "cart"
    delete 'pokemons/removeitem', to:"cart#removeitem", as: "removeitem"
    put 'pokemons/editcart', to: "cart#editcart", as: "editcart"
+   get "/about", to:"abouts#show", as: "abouts"
+   get "/contact", to:"contacts#show", as: "contacts"
 end

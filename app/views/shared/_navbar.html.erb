@@ -16,6 +16,12 @@
         <li class="nav-item">
           <a class="nav-link" href="<%= cart_path %>">CART</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= contacts_path %>">CONTACT US</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= abouts_path %>">ABOUT US</a>
+        </li>
         <% if user_signed_in? %>
          <li class="nav-item">
           <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
