@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_211942) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_215040) do
   create_table "abouts", force: :cascade do |t|
     t.string "title"
     t.string "body"
@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_211942) do
     t.decimal "HST"
     t.string "status"
     t.decimal "total"
-    t.integer "user_id"
+    t.string "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

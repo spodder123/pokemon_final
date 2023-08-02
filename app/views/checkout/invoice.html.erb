@@ -1,0 +1,23 @@
+<h1>ORDER PLACED SUCCESSFULLY</h1>
+<h1>Order Details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td><%= Pokemon.find(order_item.pokemon_id).name %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%= order_item.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>Total: <%= @order.total %></p>

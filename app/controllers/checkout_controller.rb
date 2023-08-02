@@ -48,6 +48,34 @@ class CheckoutController < ApplicationController
 def invoice
 
 
+  @total= session[:total]
+  @tax= session[:tax]
+  province = session[:province]
+  @order = Order.create!(
+  province: province["id"],
+  PST: province["PST"],
+  GST: province["GST"],
+  HST: province["HST"],
+  status: "paid",
+  total: @total.to_f + @tax.to_f,
+  user_id: user_signed_in? ? current_user.id : nil
+
+  )
+
+  @cart.each do |item|
+    orderitems = OrderItem.create!(
+      pokemon_id: item['id'],
+      quantity: item['quantity'],
+      price: Pokemon.find(item['id'].to_i).price,
+      order_id: @order.id
+    )
+  end
+
+  session[:total] = nil
+  session[:tax] = nil
+  session[:province] = nil
+  session[:mycart] = nil
+  @cart = nil
 end
 
 
