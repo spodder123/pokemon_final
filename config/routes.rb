@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "/"
+
    get "/pokemons", to:"pokemons#index", as: "pokemons"
    get "/pokemons/:id", to:"pokemons#show", as: "pokemon_show"
    get "/categories", to:"categories#index", as: "categories"
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
    patch "/users/:id/update", to:"users#update", as: "user_update"
    post 'pokemons/addtocart', to:"cart#addtocart", as: "addtocart"
    get "/cart", to:"cart#index", as: "cart"
+   post "/cart", to: "cart#test", as: "cart_test"
    delete 'pokemons/removeitem', to:"cart#removeitem", as: "removeitem"
    put 'pokemons/editcart', to: "cart#editcart", as: "editcart"
    get "/about", to:"abouts#show", as: "abouts"
