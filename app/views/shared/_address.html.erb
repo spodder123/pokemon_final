@@ -1,0 +1,14 @@
+<form class="d-flex"  method="PATCH" action="<%= user_update_address_path %>">
+      <select class="form-select" aria-label="Default select example" name="Province">
+        <option value="all">All Provinces</option>
+        <% Province.all.each do |province| %>
+          <option value="<%= province.id %>"><%= province.name %></option>
+        <% end %>
+      </select>
+     <label for="address"> Address: </label>
+     <input type="text" name="address">
+     <label for="postal_code"> Postal Code: </label>
+     <input type="text" name="postal">
+      <input class="form-control me-2" type="submit" name="Update Address" placeholder="Update Address" aria-label="Update Address">
+      <input type="hidden" name="id" value="<%= current_user.id%>">
+    </form>

@@ -38,6 +38,20 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def update_address
+    puts params.inspect
+    @user = User.find(params[:id])
+    @user.province_id = params[:Province].to_i
+    @user.address = params[:address]
+    @user.postal_code = params[:postal]
+
+    @user.save
+
+
+    redirect_to cart_path
+  end
+
   private
 
   def user_params

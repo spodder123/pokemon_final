@@ -21,4 +21,5 @@ Rails.application.routes.draw do
    put 'pokemons/editcart', to: "cart#editcart", as: "editcart"
    get "/about", to:"abouts#show", as: "abouts"
    get "/contact", to:"contacts#show", as: "contacts"
+   patch "/users/updateaddress", to:"users#update_address", as: "user_update_address"
 end

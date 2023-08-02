@@ -1,5 +1,17 @@
 <h1>Cart</h1>
+<% if user_signed_in? && User.where(id: current_user.id).first.province_id.nil? %>
+<%= render 'shared/address', user: User.where(id: current_user.id) %>
+<% else %>
+<% if !user_signed_in? %>
 
+ <select class="form-select" aria-label="Default select example" name="Province">
+        <option value="all">All Provinces</option>
+        <% Province.all.each do |province| %>
+          <option value="<%= province.id %>"><%= province.name %></option>
+        <% end %>
+      </select>
+<% end %>
+<% end%>
 <% @cart.each do |item| %>
 <li>
 <% pokemon = @pokemons.find { |p| p.id == item ['id'] }%>
@@ -11,6 +23,7 @@
 </form>
 <%= button_to 'delete', removeitem_path, params: {pokemonid: item['id']}, method: :delete%>
 </li>
+
 
 
 <% end %>
