@@ -1,2 +1,23 @@
-<h1>Checkout#index</h1>
-<p>Find me in app/views/checkout/index.html.erb</p>
+<h1>Checkout</h1>
+
+<% @cart.each do |item| %>
+<li>
+<% pokemon = Pokemon.find { |p| p.id == item ['id'] }%>
+<%= pokemon.name %>
+
+<%= item['quantity']%>
+Price= <%=  pokemon.price * item['quantity']%>
+
+
+
+</li>
+
+<% end %>
+Tax= <%= @tax%>
+TOTAL= <%= @final_total %>
+
+<%= link_to 'Confirm', invoice_path %>
+</li>
+
+
+

@@ -18,10 +18,13 @@ Rails.application.routes.draw do
    patch "/users/:id/update", to:"users#update", as: "user_update"
    post 'pokemons/addtocart', to:"cart#addtocart", as: "addtocart"
    get "/cart", to:"cart#index", as: "cart"
-   post "/cart", to: "cart#test", as: "cart_test"
    delete 'pokemons/removeitem', to:"cart#removeitem", as: "removeitem"
    put 'pokemons/editcart', to: "cart#editcart", as: "editcart"
    get "/about", to:"abouts#show", as: "abouts"
    get "/contact", to:"contacts#show", as: "contacts"
    patch "/users/updateaddress", to:"users#update_address", as: "user_update_address"
+   post "/checkoutsummary", to: "checkout#getcheckout", as: "checkout_summary"
+   get "/checkout", to: "checkout#index", as: "checkout"
+   get "/invoice", to: "checkout#invoice", as: "invoice"
+
 end
