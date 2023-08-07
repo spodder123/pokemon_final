@@ -13,7 +13,15 @@ Price= <%=  pokemon.price * item['quantity']%>
 </li>
 
 <% end %>
-Tax= <%= @tax%>
+Tax = <%= @tax%>
+<br>
+PST = <%= @pst%>
+<br>
+GST = <%= @gst%>
+<br>
+HST = <%= @hst%>
+<br>
+
 TOTAL= <%= @final_total %>
 
 <%= link_to 'Confirm', invoice_path %>

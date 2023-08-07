@@ -29,7 +29,10 @@ class CheckoutController < ApplicationController
   @tax= ((@total * (@prov.PST + @prov.GST + @prov.HST)) /100)
 
   puts @tax.inspect
-
+  puts @tax
+  session[:pst] = ((@total * (@prov.PST))/100)
+  session[:gst] = ((@total * (@prov.GST))/100)
+  session[:hst] = ((@total * (@prov.HST))/100)
   session[:total] = @total
   session[:province]= @prov
   session[:tax]= @tax
@@ -42,6 +45,9 @@ class CheckoutController < ApplicationController
     @total= session[:total]
     @prov= session[:province]
     @tax= session[:tax]
+    @pst = session[:pst]
+    @gst = session[:gst]
+    @hst = session[:hst]
     @final_total = @total.to_f + @tax.to_f
   end
 
