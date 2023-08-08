@@ -7,10 +7,17 @@ class CheckoutController < ApplicationController
     end
     if user_signed_in?
       @Province= User.where(id: current_user.id).first.province_id
+      @address = User.where(id: current_user.id).first.address
     else
       @Province = params[:Province].to_i
+      @address = params[:address]
     end
 
+    if @address.blank?
+      flash[:error] = "Please provide a delivery address."
+      redirect_back(fallback_location: cart_path)
+      return
+    end
 
     @total = 0
 
@@ -36,12 +43,14 @@ class CheckoutController < ApplicationController
   session[:total] = @total
   session[:province]= @prov
   session[:tax]= @tax
+  session[:address] = @address
 
     redirect_to checkout_path
 
   end
 
   def index
+    @address = session[:address]
     @total= session[:total]
     @prov= session[:province]
     @tax= session[:tax]
@@ -53,10 +62,11 @@ class CheckoutController < ApplicationController
 
 def invoice
 
-
+  @address = session[:address]
   @total= session[:total]
   @tax= session[:tax]
   province = session[:province]
+  puts province["id"]
   @order = Order.create!(
   province: province["id"],
   PST: province["PST"],
@@ -76,7 +86,6 @@ def invoice
       order_id: @order.id
     )
   end
-
   session[:total] = nil
   session[:tax] = nil
   session[:province] = nil
