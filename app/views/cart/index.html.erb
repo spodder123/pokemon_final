@@ -25,9 +25,13 @@
         <option value="all">All Provinces</option>
         <% Province.all.each do |province| %>
           <option value="<%= province.id %>"><%= province.name %></option>
+          <br>
         <% end %>
       </select>
+      <label for="postal">Postal</label>
+      <input type="text" name="postal" placeholder="<%= flash[:error] ? 'Please provide the Postal Code' : '' %>" >
       <label for="address">Address</label>
+      <br>
       <input type="text" name="address" placeholder="<%= flash[:error] ? 'Please provide the delivery address' : '' %>">
       <input type="submit" name="submit" value="checkout">
       <% if flash[:error] %>

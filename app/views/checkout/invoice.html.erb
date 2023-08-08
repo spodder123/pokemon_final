@@ -6,7 +6,7 @@
     <tr>
       <th>Name</th>
       <th>Quantity</th>
-      <th>Price</th>
+      <th>Total Price</th>
     </tr>
   </thead>
   <tbody>
@@ -20,5 +20,20 @@
   </tbody>
 </table>
 
-<p>Total: <%= @order.total %></p>
-<p>Delivery Address: <%= @address %></p>
+Address: <%= @address %>
+<br>
+Province: <%= @province_name %>
+<br>
+Tax = <%= @tax%>
+<br>
+PST = <%= @pst%>
+<br>
+GST = <%= @gst%>
+<br>
+HST = <%= @hst%>
+<br>
+Postal: <%= @postal%>
+<br>
+
+
+<p>Total: <%= number_with_precision(@order.total, precision: 2) %></p>

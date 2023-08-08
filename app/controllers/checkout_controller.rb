@@ -1,6 +1,8 @@
 class CheckoutController < ApplicationController
   def getcheckout
 
+
+
     if @cart.length == 0
       redirect_to cart_path
       return
@@ -8,9 +10,11 @@ class CheckoutController < ApplicationController
     if user_signed_in?
       @Province= User.where(id: current_user.id).first.province_id
       @address = User.where(id: current_user.id).first.address
+      @postal = User.where(id: current_user.id).first.postal_code
     else
       @Province = params[:Province].to_i
       @address = params[:address]
+      @postal = params[:postal]
     end
 
     if @address.blank?
@@ -31,6 +35,7 @@ class CheckoutController < ApplicationController
   console
 
  @prov= Province.find(@Province)
+ @province_name = @prov.name
 
 
   @tax= ((@total * (@prov.PST + @prov.GST + @prov.HST)) /100)
@@ -44,6 +49,10 @@ class CheckoutController < ApplicationController
   session[:province]= @prov
   session[:tax]= @tax
   session[:address] = @address
+  session[:province]['name']= @province_name
+  session[:postal] = @postal
+
+
 
     redirect_to checkout_path
 
@@ -58,13 +67,21 @@ class CheckoutController < ApplicationController
     @gst = session[:gst]
     @hst = session[:hst]
     @final_total = @total.to_f + @tax.to_f
+    @province_name = session[:province]['name']
+    @postal = session[:postal]
+
   end
 
 def invoice
 
   @address = session[:address]
+  @postal = session[:postal]
+  @province_name = session[:province]['name']
   @total= session[:total]
   @tax= session[:tax]
+  @pst = session[:pst]
+  @gst = session[:gst]
+  @hst = session[:hst]
   province = session[:province]
   puts province["id"]
   @order = Order.create!(

@@ -18,6 +18,8 @@ Price= <%=  pokemon.price * item['quantity']%>
 <% end %>
 Address: <%= @address %>
 <br>
+Province: <%= @province_name %>
+<br>
 Tax = <%= @tax%>
 <br>
 PST = <%= @pst%>
@@ -26,8 +28,9 @@ GST = <%= @gst%>
 <br>
 HST = <%= @hst%>
 <br>
-
-TOTAL= <%= @final_total %>
+Postal = <%=@postal%>
+<br>
+<p>Total: <%= number_with_precision(@final_total, precision: 2) %></p>
 
 <%= link_to 'Confirm', invoice_path %>
 </li>
